@@ -1,0 +1,11 @@
+<changelog project="XBMC DVD Manager">
+	<release date="2009/06/17">
+		<version>
+			<major>0</major>
+			<minor>0</minor>
+		</version>
+		<changes>
+			<change type="add">Added the base directory and supporting documents</change>
+		</changes>
+	</release>
+</changelog>
