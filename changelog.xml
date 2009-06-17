@@ -2,6 +2,16 @@
 	<release date="2009/06/17">
 		<version>
 			<major>0</major>
+			<minor>1</minor>
+		</version>
+		<changes>
+			<change type="add">Created the default video clip to be displayed when attempting to view an offline DVD</change>
+			<change type="add">Script can now process a batch file of video titles</change>
+		</changes>
+	</release>
+	<release date="2009/06/17">
+		<version>
+			<major>0</major>
 			<minor>0</minor>
 		</version>
 		<changes>

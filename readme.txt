@@ -1,4 +1,4 @@
-XBMC DVD Manager, v0.0
+XBMC DVD Manager, v0.1
 =================================================
 
 Installation:
@@ -7,7 +7,11 @@ Installation:
 	- Voila!
 
 Use:
-	- Sorry, but it doesn't do anything yet!
+	- Edit the "videos.txt" file such that each line contains a separate video title.
+	- From the main XBMC menu, select "Scripts".
+	- From the Scripts menu, select "DvdManager".
+	- That's it!
+	- Heads up: there is no error handling yet, so watch out ;-)
 
 Support:
 	- @asylumfunk
