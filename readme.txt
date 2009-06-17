@@ -7,7 +7,7 @@ Installation:
 	- Voila!
 
 Use:
-	- Edit the "videos.txt" file such that each line contains a separate video title.
+	- Edit the "dvds.txt" file such that each line contains a separate video title.
 	- From the main XBMC menu, select "Scripts".
 	- From the Scripts menu, select "DvdManager".
 	- That's it!
