@@ -9,7 +9,7 @@ import os
 DefaultBatchFile = "dvds.txt"
 DefaultLocation = "DVDs/"
 DefaultVideo = "insertDisc.mpg"
-DefaultExtension = os.path.splitext( DefaultVideo )[ 1 ][ 1: ]
+DefaultVideoExtension = os.path.splitext( DefaultVideo )[ 1 ][ 1: ]
 
 #Sanitize the default location
 if DefaultLocation == "":
