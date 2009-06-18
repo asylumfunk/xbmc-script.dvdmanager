@@ -1,4 +1,5 @@
 import os
+import shutil
 import config
 
 class OfflineVideo:
@@ -21,24 +22,28 @@ class OfflineVideo:
 	"""
 	Description:
 		copies the default video and saves it to the specified path
-	TODO: error handling, what if I/O fails?
 	TODO: return a status flag of some sort (success/failure)
 	TODO: see if we can use (and if there's a benefit to using) a native file copy
 	"""
 	def add( self ):
 		#We need to make sure the location actually exists before we try writing there.
 		if not os.path.isdir( self.location ):
-			os.makedirs( self.location )
+			try:
+				os.makedirs( self.location )
+			except OSError:	#failed to create the directory
+				return
 
-		inputFile = os.path.join( os.getcwd(), config.DefaultVideo )
+		src = os.path.join( os.getcwd(), config.DefaultVideo )
+		dst = self.path()
 
 		#We don't want to risk overwriting any existing files, until we have a prompt.
-		if not os.path.isfile( inputFile ):
-			input = open( inputFile, "rb" )
-			output = open( self.path(), "wb" )
-			output.write( input.read() )
-			input.close()
-			output.close()
+		if not os.path.isfile( src ):
+			try:
+				shutil.copyfile( src, dst )
+			except shutil.Error:	#source and destination are the same file
+				return
+			except IOError:	#destination is not writable
+				return
 
 	"""
 	Desciption:
