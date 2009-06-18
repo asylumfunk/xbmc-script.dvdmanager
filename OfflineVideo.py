@@ -1,6 +1,7 @@
 import os
 import shutil
 import config
+from Logger import log
 
 class OfflineVideo:
 	"""Represents an entry in the system"""
@@ -33,22 +34,26 @@ class OfflineVideo:
 			try:
 				os.makedirs( self.location )
 			except OSError:	#failed to create the directory
+				log.debug( "failed to create the directory" )
 				return False
 
 		src = os.path.join( os.getcwd(), config.DefaultVideo )
 		dst = self.path()
 
 		#We don't want to risk overwriting any existing files, until we have a prompt.
-		if not os.path.isfile( src ):
+		if not os.path.isfile( dst ):
 			try:
 				shutil.copyfile( src, dst )
 			except shutil.Error:	#source and destination are the same file
+				log.debug( "source and destination are the same file" )
 				return False
 			except IOError:	#destination is not writable
+				log.debug( "destination is not writable" )
 				return False
 			else:
 				return True
 		else:
+			log.debug( "file already exists: " + dst )
 			return False
 
 	"""
