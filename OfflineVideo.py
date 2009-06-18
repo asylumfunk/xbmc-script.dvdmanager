@@ -9,16 +9,14 @@ class OfflineVideo:
 		basic constructor
 		assigns values to instance variables
 	Args:
-		location : where the file will be saved
-		name : the name of video, without file extension
+		location: where the file will be saved
+		name: the name of video, without file extension
 	Returns:
 		a new OfflineVideo instance
-	TODO:	do I really want to be assigning to self.extension when this value never changes, for now ;-)
 	"""
 	def __init__( self, location, name ):
 		self.location = os.path.abspath( location )
 		self.name = name
-		self.extension = config.DefaultVideoExtension
 
 	"""
 	Description:
@@ -32,11 +30,15 @@ class OfflineVideo:
 		if not os.path.isdir( self.location ):
 			os.makedirs( self.location )
 
-		input = open( os.path.join( os.getcwd(), config.DefaultVideo ), "rb" )
-		output = open( self.path(), "wb" )
-		output.write( input.read() )
-		input.close()
-		output.close()
+		inputFile = os.path.join( os.getcwd(), config.DefaultVideo )
+
+		#We don't want to risk overwriting any existing files, until we have a prompt.
+		if not os.path.isfile( inputFile ):
+			input = open( inputFile, "rb" )
+			output = open( self.path(), "wb" )
+			output.write( input.read() )
+			input.close()
+			output.close()
 
 	"""
 	Desciption:
@@ -45,4 +47,4 @@ class OfflineVideo:
 		the full pathname of the file (including extension)
 	"""
 	def path( self ):
-		return os.path.join( self.location, self.name ) + os.path.extsep + self.extension
+		return os.path.join( self.location, self.name ) + os.path.extsep + config.DefaultVideoExtension
