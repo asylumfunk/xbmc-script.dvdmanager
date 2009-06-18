@@ -4,6 +4,7 @@ import config
 
 class OfflineVideo:
 	"""Represents an entry in the system"""
+	#TODO: error logging
 
 	"""
 	Description:
@@ -22,8 +23,9 @@ class OfflineVideo:
 	"""
 	Description:
 		copies the default video and saves it to the specified path
-	TODO: return a status flag of some sort (success/failure)
-	TODO: see if we can use (and if there's a benefit to using) a native file copy
+	Returns:
+		Success: True
+		Failure: False
 	"""
 	def add( self ):
 		#We need to make sure the location actually exists before we try writing there.
@@ -31,7 +33,7 @@ class OfflineVideo:
 			try:
 				os.makedirs( self.location )
 			except OSError:	#failed to create the directory
-				return
+				return False
 
 		src = os.path.join( os.getcwd(), config.DefaultVideo )
 		dst = self.path()
@@ -41,9 +43,13 @@ class OfflineVideo:
 			try:
 				shutil.copyfile( src, dst )
 			except shutil.Error:	#source and destination are the same file
-				return
+				return False
 			except IOError:	#destination is not writable
-				return
+				return False
+			else:
+				return True
+		else:
+			return False
 
 	"""
 	Desciption:
