@@ -4,8 +4,7 @@ import config
 from Logger import log
 
 class OfflineVideo:
-	"""Represents an entry in the system"""
-	#TODO: error logging
+	"""Represents a DVD in your collection"""
 
 	"""
 	Description:
@@ -25,17 +24,18 @@ class OfflineVideo:
 	Description:
 		copies the default video and saves it to the specified path
 	Returns:
-		Success: True
-		Failure: False
+		Success: 1
+		Skipped: 0
+		Failure: -1
 	"""
 	def add( self ):
 		#We need to make sure the location actually exists before we try writing there.
 		if not os.path.isdir( self.location ):
 			try:
 				os.makedirs( self.location )
-			except OSError:	#failed to create the directory
-				log.debug( "failed to create the directory" )
-				return False
+			except OSError:
+				log.error( "Failed to create directory: " + self.location )
+				return -1
 
 		src = os.path.join( os.getcwd(), config.DefaultVideo )
 		dst = self.path()
@@ -44,17 +44,17 @@ class OfflineVideo:
 		if not os.path.isfile( dst ):
 			try:
 				shutil.copyfile( src, dst )
-			except shutil.Error:	#source and destination are the same file
-				log.debug( "source and destination are the same file" )
-				return False
-			except IOError:	#destination is not writable
-				log.debug( "destination is not writable" )
-				return False
+			except shutil.Error:
+				log.error( "Source and destination files are the same" )
+				return -1
+			except IOError:
+				log.error( "Destination is not writable" )
+				return -1
 			else:
-				return True
+				return 1
 		else:
-			log.debug( "file already exists: " + dst )
-			return False
+			log.debug( "File already exists: " + dst )
+			return 0
 
 	"""
 	Desciption:
