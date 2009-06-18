@@ -8,27 +8,7 @@ To see what's been changing, check out changelog.xml
 
 
 import os
-
-"""
-Set up some basic configuration values
-TODO: split this out into its own module(?)
-TODO: pull from XML
-TODO: make configurable via UI, once we have one
-TODO: should this really be a dictionary?
-"""
-config = {
-	"DefaultBatchFile" : "dvds.txt",
-	"DefaultLocation" : "DVDs/",
-	"DefaultVideo" : "insertDisc.mpg"
-}
-#TODO: do we care if this could blow up???
-config[ "DefaultExtension" ] = os.path.splitext( config.get( "DefaultVideo" ) )[ 1 ][ 1: ]
-
-#Sanitize the default location
-if config.get( "DefaultLocation" ) == "":
-	config[ "DefaultLocation" ] = os.getcwd()
-elif not os.path.isabs( config.get( "DefaultLocation" ) ):
-	config[ "DefaultLocation" ] = os.path.join( os.getcwd(), config.get( "DefaultLocation" ) )
+import config
 
 
 """
@@ -48,7 +28,7 @@ class OfflineVideo:
 	def __init__( self, location, name ):
 		self.location = os.path.abspath( location )
 		self.name = name
-		self.extension = config.get( "DefaultExtension" )
+		self.extension = config.DefaultExtension
 
 	"""
 	Desc:	copies the default video and saves it to the path specified by the object
@@ -63,7 +43,7 @@ class OfflineVideo:
 		if not os.path.isdir( self.location ):
 			os.makedirs( self.location )
 
-		input = open( os.path.join( os.getcwd(), config.get( "DefaultVideo" ) ), "rb" )
+		input = open( os.path.join( os.getcwd(), config.DefaultVideo ), "rb" )
 		output = open( self.path(), "wb" )
 		output.write( input.read() )
 		input.close()
@@ -96,5 +76,5 @@ def processBatch( batchFile, saveLocation ):
 		video.add()
 
 #Now lets actually do something with it
-batchFile = os.path.join( os.getcwd(), config.get( "DefaultBatchFile" ) )
-processBatch( batchFile, config.get( "DefaultLocation" ) )
+batchFile = os.path.join( os.getcwd(), config.DefaultBatchFile )
+processBatch( batchFile, config.DefaultLocation )
