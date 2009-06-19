@@ -6,8 +6,8 @@ import xbmcgui
 import config
 
 class Logger:
-	def __init__( self, fileName ):
-		self.fileName = fileName
+	def __init__( self ):
+		pass
 
 	def debug( self, message ):
 		print self._log( "debug", message )
@@ -28,4 +28,4 @@ class Logger:
 		dlg = xbmcgui.Dialog()
 		ok = dlg.ok( title, msg )
 
-log = Logger( config.Logfile )
+log = Logger( )

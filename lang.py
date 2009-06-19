@@ -115,3 +115,5 @@ class lang:
 	"""
 	def theFile( self, language ):
 		return os.path.join( self.rootDir, "language", language, "strings.xml" )
+
+lang = lang()
