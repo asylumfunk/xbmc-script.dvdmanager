@@ -9,3 +9,7 @@ To see what's been changing, check out changelog.xml
 
 #Project modules
 import ui
+
+ui = ui.ui()
+
+ui.batchAdd()
