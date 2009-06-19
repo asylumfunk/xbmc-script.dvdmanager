@@ -16,3 +16,5 @@ if DefaultLocation == "":
 	DefaultLocation = os.getcwd()
 elif not os.path.isabs( DefaultLocation ):
 	DefaultLocation = os.path.join( os.getcwd(), DefaultLocation )
+
+ApplicationName = "XBMC DVD Manager"
