@@ -17,18 +17,6 @@ import config
 import lang
 from Logger import log
 
-"""
-Description:
-	Processes a newline-deliminated list of videos
-Args:
-	batchFile: name of a newline-deliminated file of titles to be processed
-	saveLocation: directory to which all output files are saved
-Returns:
-	[0]: number of successes
-	[1]: number of skips
-	[2]: number of failures
-"""
-
 #Now lets actually do something with it
 lang = lang.lang()
 
