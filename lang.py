@@ -30,7 +30,8 @@ class lang:
 		self.file = None
 		self.strings = { }
 		self.initSupportedLanguage()
-		self.load()
+		if self.language is not None:
+			self.load()
 
 	"""
 	Description:
@@ -55,7 +56,8 @@ class lang:
 	def initSupportedLanguage( self ):
 		if not self.set( xbmc.getLanguage().lower() ):
 			if not self.set( self.defaultLanguage ):
-				log.error( "Unable to load the default language file: " + self.language )
+				self.set( None )
+				log.error( "Unable to load the default language file: " + self.defaultLanguage )
 		return self
 
 	"""
@@ -65,7 +67,7 @@ class lang:
 		boolean : whether or not the current language is supported
 	"""
 	def isSupported( self ):
-		return os.path.isfile( self.file )
+		return self.language is not None and os.path.isfile( self.file )
 
 	"""
 	Description:
@@ -79,6 +81,7 @@ class lang:
 		doc = xml.dom.minidom.parse( self.file )
 		root = doc.documentElement
 		if ( not root or root.tagName != "strings" ):
+			self.set( None )
 			log.error( "Unable to parse the language file: " + self.language )
 		strings = root.getElementsByTagName( "string" )
 		for string in strings:
@@ -102,8 +105,13 @@ class lang:
 	"""
 	def set( self, language ):
 		self.language = language
-		self.file = self.theFile( language )
-		return self.isSupported()
+
+		if language is None:
+			self.file = None
+			return False
+		else:
+			self.file = self.theFile( language )
+			return self.isSupported()
 
 	"""
 	Description:
@@ -115,5 +123,3 @@ class lang:
 	"""
 	def theFile( self, language ):
 		return os.path.join( self.rootDir, "language", language, "strings.xml" )
-
-lang = lang()

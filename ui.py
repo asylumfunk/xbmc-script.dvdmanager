@@ -6,11 +6,14 @@ import xbmcgui
 #Project modules
 import act
 import config
-from lang import lang
+import lang
 from log import log
 
-
 class ui:
+	"""Handles the user interface layer"""
+
+	def __init__( self ):
+		self.lang = lang.lang()
 
 	browseTypes = {
 		'ShowAndGetDirectory' : 0,
@@ -20,10 +23,10 @@ class ui:
 	}
 
 	def batchAdd( self ):
-		browser = xbmcgui.Dialog()
-		file = browser.browse(
+		fileBrowser = xbmcgui.Dialog()
+		file = fileBrowser.browse(
 			ui.browseTypes[ 'ShowAndGetFile' ] #type
-			, lang.get( "Add_Batch_Browse_File_Header" ) #heading
+			, self.lang.get( "Add_Batch_Browse_File_Header" ) #heading
 			, "files" #shares
 			, config.BatchFileTypeMask #mask
 			, False #useThumbs
@@ -32,10 +35,10 @@ class ui:
 		)
 		if not os.path.isfile( file ): #the user cancelled the dialog
 			return
-		browser = xbmcgui.Dialog()
-		location = browser.browse(
+		locationBrowser = xbmcgui.Dialog()
+		location = locationBrowser.browse(
 			ui.browseTypes[ 'ShowAndGetDirectory' ] #type
-			, lang.get( "Add_Batch_Browse_Location_Header" ) #heading
+			, self.lang.get( "Add_Batch_Browse_Location_Header" ) #heading
 			, "video" #shares
 			, "" #mask
 			, True #useThumbs
@@ -48,8 +51,12 @@ class ui:
 		result = act.processBatch( file, location )
 		if result[ 0 ] >= 0 and result[ 1 ] >= 0 and result[ 2 ] >= 0:
 			dlg = xbmcgui.Dialog()
-			ok = dlg.ok( lang.get( "Add_Batch_Results_Header" )
-				, lang.get( "Add_Batch_Results_Copied" ).replace( "{0}", str( result[ 0 ] ) )
-				, lang.get( "Add_Batch_Results_Skipped" ).replace( "{0}", str( result[ 1 ] ) )
-				, lang.get( "Add_Batch_Results_Skipped" ).replace( "{0}", str( result[ 2 ] ) ) )
+			ok = self.ok( self.lang.get( "Add_Batch_Results_Header" )
+				, self.lang.get( "Add_Batch_Results_Copied" ).replace( "{0}", str( result[ 0 ] ) )
+				, self.lang.get( "Add_Batch_Results_Skipped" ).replace( "{0}", str( result[ 1 ] ) )
+				, self.lang.get( "Add_Batch_Results_Skipped" ).replace( "{0}", str( result[ 2 ] ) ) )
 		#TODO: log a stat
+
+	def ok( self, header, line1 = "", line2 = "", line3 = "" ):
+		dialog = xbmcgui.Dialog()
+		return dialog.ok( header, line1, line2, line3 )

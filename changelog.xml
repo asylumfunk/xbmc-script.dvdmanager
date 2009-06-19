@@ -1,4 +1,16 @@
 <changelog project="XBMC DVD Manager">
+	<release date="2009/06/19">
+		<version>
+			<major>1</major>
+			<minor>0</minor>
+		</version>
+		<changes>
+			<change type="add">Implemented the UI so users can interact directly with the script, instead of fiddling with source files ;-)</change>
+			<change type="add">Added full i18n support</change>
+			<change type="add">Added detailed logging</change>
+			<change type="fix">Cleaned up the program's guts so it's both a bit prettier and more efficient</change>
+		</changes>
+	</release>
 	<release date="2009/06/17">
 		<version>
 			<major>0</major>

@@ -12,4 +12,7 @@ import ui
 
 ui = ui.ui()
 
-ui.batchAdd()
+if ui.lang.isSupported():
+	ui.batchAdd()
+else:
+	ui.ok( "Error", "We were unable to ititialize the script.", "The script will now close.", "If the problem persists, please reinstall the script." )

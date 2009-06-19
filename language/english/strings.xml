@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
-	<string key="ApplicationName">XBOX DVD Manager</string>
-	<string key="Add_Batch_Results_Header">Batch Add: Results</string>
+	<string key="ApplicationName">XBMC DVD Manager</string>
+	<string key="Add_Batch_Results_Header">Results: Batch process</string>
 	<string key="Add_Batch_Results_Copied">{0} copied</string>
 	<string key="Add_Batch_Results_Skipped">{0} skipped</string>
 	<string key="Add_Batch_Results_Failed">{0} failed</string>
+	<string key="Add_Batch_Browse_File_Header">Please select the list of DVDs:</string>
+	<string key="Add_Batch_Browse_Location_Header">Please select the location of your DVD library:</string>
 </strings>
