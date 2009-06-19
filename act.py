@@ -1,6 +1,6 @@
 #Project modules
-from log import log
-from OfflineVideo import OfflineVideo
+import log
+import OfflineVideo
 
 """
 Description:
@@ -8,12 +8,14 @@ Description:
 Args:
 	batchFile: name of a newline-deliminated file of titles to be processed
 	saveLocation: directory to which all output files are saved
+	progress::DialogProgress : used to update the operation's progress
+	lang::lang : the currently loaded language object
 Returns:
 	[0]: number of successes
-	[1]: number of skips
-	[2]: number of failures
+	[1]: number of failures
+	[2]: number of skips
 """
-def processBatch( batchFile, saveLocation ):
+def processBatch( batchFile, saveLocation, progress, lang ):
 	try:
 		input = open( batchFile, "r" )
 	except IOError:
@@ -24,12 +26,22 @@ def processBatch( batchFile, saveLocation ):
 	input.close()
 
 	names = data.splitlines()
+	count = len( names )
+	runningTotal = 0
 	successes = 0
 	failures = 0
 	skips = 0
 
 	for name in names:
-		video = OfflineVideo( saveLocation, name )
+		if progress.iscanceled():
+			break
+		else:
+			runningTotal = runningTotal + 1
+			progress.update( runningTotal * 100 / count, lang.get( "Add_Batch_Progress_Status" ).replace( "{0}", str( runningTotal ) ).replace( "{1}", str( count ) ), name )
+		if name == "" or name is None:
+			skips = skips + 1
+			continue
+		video = OfflineVideo.OfflineVideo( saveLocation, name )
 		result = video.add()
 		if result > 0:
 			successes = successes + 1
@@ -38,4 +50,4 @@ def processBatch( batchFile, saveLocation ):
 		else:
 			skips = skips + 1
 
-	return successes, skips, failures
+	return successes, failures, skips

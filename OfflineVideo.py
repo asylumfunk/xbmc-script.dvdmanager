@@ -3,7 +3,7 @@ import os
 import shutil
 #Project modules
 import config
-from log import log
+import log
 
 class OfflineVideo:
 	"""Represents a DVD in your collection"""

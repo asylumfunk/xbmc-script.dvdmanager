@@ -6,14 +6,6 @@ Installation:
 	inside of your XBMC installation.
 	- Voila!
 
-Use:
-	- From the main XBMC menu, select "Scripts".
-	- From the Scripts menu, select "DvdManager".
-	- Select the batch file that contains the list of DVDs.
-		Note: the file should contain a list of the movies to be added, each on a separate line
-	- Select the location where you want to save the collection.
-	- That's it!
-
 Note:
 	- The script will not overwrite any existing files.
 	- Be sure to do one of the following:
@@ -62,8 +54,6 @@ Why:	To put it simply, this is an XBMC script that enables you to browse your DV
 	Immediately and before writing a single line of code or enumerating a feature list, I wrote down the following objective, which I hope will always guide the development of this project:
 
 	"to easily peruse my collection of DVDs via XMBC... without ever leaving my couch"
-
-	The project will begin as bare-bones as possible, but I plan on updating it regularly with a healthy, iterative release cycle. I've already got the first few releases planned out in my head, so it ought to keep my busy.
 
 	Love it? Hate it? Have an idea?
 	Let me know at @asylumfunk
