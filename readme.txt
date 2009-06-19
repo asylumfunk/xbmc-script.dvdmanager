@@ -2,7 +2,6 @@ XBMC DVD Manager, v0.1
 =================================================
 
 Installation:
-	- Edit the "dvds.txt" file such that each line contains a separate video title.
 	- Copy the "DvdManager\" directory to the "scripts\" directory
 	inside of your XBMC installation.
 	- Make sure that the videos will be added to your library by doing the following:
@@ -13,11 +12,12 @@ Installation:
 	I realize that it's pretty raw right now... I'm working on it.
 
 Use:
-	- Edit the "dvds.txt" file such that each line contains a separate video title.
 	- From the main XBMC menu, select "Scripts".
 	- From the Scripts menu, select "DvdManager".
+	- When prompted, select the batch file that contains the list of DVDs
+		Note: the file should contain a list of the movies to be added, each on a separate line
 	- That's it!
-	- Heads up: there is no error handling yet, so watch out ;-)
+	- Heads up: only minimal error handling so far, so watch out ;-)
 
 What does it do?
 	- The script saves a dummy video file, impersonating the actual movie, using the title provided.
