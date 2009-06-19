@@ -1,11 +1,13 @@
+#Standard modules
 import inspect
 import os
 import time
+#Third-party modules
 import xbmcgui
-
+#Project modules
 import config
 
-class Logger:
+class log:
 	def __init__( self ):
 		pass
 
@@ -28,4 +30,4 @@ class Logger:
 		dlg = xbmcgui.Dialog()
 		ok = dlg.ok( title, msg )
 
-log = Logger( )
+log = log( )

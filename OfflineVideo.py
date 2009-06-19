@@ -1,7 +1,9 @@
+#Standard modules
 import os
 import shutil
+#Project modules
 import config
-from Logger import log
+from log import log
 
 class OfflineVideo:
 	"""Represents a DVD in your collection"""

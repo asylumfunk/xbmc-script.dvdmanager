@@ -5,7 +5,7 @@ import xml.dom.minidom
 #Third-party modules
 import xbmc
 #Project modules
-from Logger import log
+from log import log
 
 class lang:
 	"""Handles all of the user facing text and i18n

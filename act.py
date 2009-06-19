@@ -1,5 +1,5 @@
 #Project modules
-from Logger import log
+from log import log
 from OfflineVideo import OfflineVideo
 
 """

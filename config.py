@@ -2,7 +2,7 @@
 Set up some basic configuration values
 TODO: make configurable via UI, once we have one
 """
-
+#Standard modules
 import os
 
 
