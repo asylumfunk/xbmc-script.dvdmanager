@@ -9,7 +9,7 @@ import act
 import config
 import lang
 import log
-import OfflineVideo
+import dvd
 
 
 """Handles the user interface layer"""
@@ -68,7 +68,7 @@ def addSingle():
 	if location is None:
 		return
 	name = keyboard.getText()
-	video = OfflineVideo.OfflineVideo( location, name )
+	video = dvd.dvd( location, name )
 	status = video.add()
 	response = xbmcgui.Dialog()
 	if status > 0: #successfully added

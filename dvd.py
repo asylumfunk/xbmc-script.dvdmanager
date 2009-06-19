@@ -5,7 +5,7 @@ import shutil
 import config
 import log
 
-class OfflineVideo:
+class dvd:
 	"""Represents a DVD in your collection"""
 
 	"""

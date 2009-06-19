@@ -1,6 +1,6 @@
 #Project modules
 import log
-import OfflineVideo
+import dvd
 
 """
 Description:
@@ -41,7 +41,7 @@ def processBatch( batchFile, saveLocation, progress, lang ):
 		if name == "" or name is None:
 			skips = skips + 1
 			continue
-		video = OfflineVideo.OfflineVideo( saveLocation, name )
+		video = dvd.dvd( saveLocation, name )
 		result = video.add()
 		if result > 0:
 			successes = successes + 1
