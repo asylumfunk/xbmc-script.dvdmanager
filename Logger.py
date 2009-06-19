@@ -14,8 +14,7 @@ class Logger:
 
 	def error( self, message ):
 		print self._log( "error", message )
-		dlg = xbmcgui.Dialog()
-		ok = dlg.ok( "Error", message )
+		self.warn( "Error", message )
 
 	def stat( self, message ):
 		print self._log( "stat", message )
@@ -24,5 +23,9 @@ class Logger:
 		caller = inspect.stack()[ 3 ][ 3 ]
 		line = time.strftime( "%Y.%m.%d %H:%M:%S" ) + " (" + level + ") : " + caller + " : " + message
 		print line
+
+	def warn( self, title, msg ):
+		dlg = xbmcgui.Dialog()
+		ok = dlg.ok( title, msg )
 
 log = Logger( config.Logfile )

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+	<string key="ApplicationName">XBOX DVD Manager</string>
+	<string key="Add_Batch_Results_Header">Batch Add: Results</string>
+	<string key="Add_Batch_Results_Copied">{0} copied</string>
+	<string key="Add_Batch_Results_Skipped">{0} skipped</string>
+	<string key="Add_Batch_Results_Failed">{0} failed</string>
+</strings>
