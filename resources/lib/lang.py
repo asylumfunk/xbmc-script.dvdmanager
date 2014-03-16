@@ -41,7 +41,7 @@ class lang:
 		rootDir : string : the script's root directory
 	"""
 	def __init__( self ):
-		self.rootDir = os.getcwd()
+		self.rootDir = sys.modules['__main__'].__path__
 		self.defaultLanguage = "english"
 		self.language = None
 		self.file = None
@@ -139,4 +139,5 @@ class lang:
 		string : absolute path of the language file
 	"""
 	def theFile( self, language ):
-		return os.path.join( self.rootDir, "language", language, "strings.xml" )
+		path = os.path.join( self.rootDir, "language", language, "strings.xml" )
+		return path

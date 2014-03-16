@@ -23,6 +23,18 @@ For more information, fire up README.txt
 To see what's been changing, check out changelog.xml
 """
 
+import os
+import sys
+import xbmcaddon
+
+__addon__ = xbmcaddon.Addon('script.dvdmanager')
+__scriptname = __addon__.getAddonInfo('name')
+__path__ = __addon__.getAddonInfo('path')
+__resources__ = os.path.join(__path__, 'resources')
+__lib__ = os.path.join(__resources__, 'lib')
+
+sys.path.append(__lib__)
+
 #Project modules
 import ui
 
