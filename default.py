@@ -38,7 +38,8 @@ sys.path.append(__lib__)
 #Project modules
 import ui
 
-if ui.lang.isSupported():
-	ui.displayMainMenu()
-else:
-	ui.ok( "Error", "We were unable to ititialize the script.", "The script will now close.", "If the problem persists, please reinstall the script." )
+if __name__ == '__main__':
+	if ui.lang.isSupported():
+		ui.displayMainMenu()
+	else:
+		ui.ok( "Error", "We were unable to ititialize the script.", "The script will now close.", "If the problem persists, please reinstall the script." )
