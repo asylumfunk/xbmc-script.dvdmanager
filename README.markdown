@@ -34,7 +34,7 @@ What does it do?
 ----------------
 - The script saves a dummy video file, impersonating the actual movie,
 	using the title provided.
-- As far XBMC is concerned, the dummy file actually is the movie
+- As far as XBMC is concerned, the dummy file actually is the movie
 	in question.
 - By "fooling" XBMC, you can then browse your DVD collection,
 	view movie/cast/etc information in XBMC, just like any other movie.
